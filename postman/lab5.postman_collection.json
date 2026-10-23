@@ -1,0 +1,136 @@
+{
+  "info": {
+    "name": "ЛР 5 – Расчёт премий",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "01 Управленец TL: годовая и квартальная премия",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"uid\": \"1\",\n  \"operationUid\": \"op-1\",\n  \"systemName\": \"ERP\",\n  \"systemTime\": \"{{$isoTimestamp}}\",\n  \"source\": \"web\",\n  \"position\": \"TL\",\n  \"salary\": 100000.0,\n  \"bonus\": 2.0,\n  \"workDays\": 243,\n  \"communicationId\": 100,\n  \"templateId\": 8,\n  \"productCode\": 1500,\n  \"smsCode\": 10\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/feedback",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "feedback"
+          ]
+        }
+      }
+    },
+    {
+      "name": "02 Разработчик DEV: только годовая премия",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"uid\": \"1\",\n  \"operationUid\": \"op-1\",\n  \"systemName\": \"ERP\",\n  \"systemTime\": \"{{$isoTimestamp}}\",\n  \"source\": \"web\",\n  \"position\": \"DEV\",\n  \"salary\": 100000.0,\n  \"bonus\": 2.0,\n  \"workDays\": 243,\n  \"communicationId\": 100,\n  \"templateId\": 8,\n  \"productCode\": 1500,\n  \"smsCode\": 10\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/feedback",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "feedback"
+          ]
+        }
+      }
+    },
+    {
+      "name": "03 CTO: годовая и квартальная премия",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"uid\": \"1\",\n  \"operationUid\": \"op-1\",\n  \"systemName\": \"ERP\",\n  \"systemTime\": \"{{$isoTimestamp}}\",\n  \"source\": \"web\",\n  \"position\": \"CTO\",\n  \"salary\": 250000.0,\n  \"bonus\": 1.5,\n  \"workDays\": 247,\n  \"communicationId\": 100,\n  \"templateId\": 8,\n  \"productCode\": 1500,\n  \"smsCode\": 10\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/feedback",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "feedback"
+          ]
+        }
+      }
+    },
+    {
+      "name": "04 Ошибка валидации: нет должности, отрицательный оклад",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"uid\": \"1\",\n  \"operationUid\": \"op-1\",\n  \"systemName\": \"ERP\",\n  \"systemTime\": \"{{$isoTimestamp}}\",\n  \"source\": \"web\",\n  \"position\": null,\n  \"salary\": -1,\n  \"bonus\": 2.0,\n  \"workDays\": 243,\n  \"communicationId\": 100,\n  \"templateId\": 8,\n  \"productCode\": 1500,\n  \"smsCode\": 10\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/feedback",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "feedback"
+          ]
+        }
+      }
+    }
+  ]
+}
